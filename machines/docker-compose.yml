@@ -51,7 +51,9 @@ services:
       - nginx-dupeczki
       - nginx-ministranci
   fpm:
-    image: php:fpm
+    build:
+      context: .
+      dockerfile: ./fpm/Dockerfile
     volumes_from:
       - web
     volumes:
