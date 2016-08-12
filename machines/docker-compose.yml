@@ -47,5 +47,6 @@ services:
     build:
       context: .
       dockerfile: ./fpm/Dockerfile
-    volumes_from:
-      - web
+    volumes:
+      - ../sites:/var/www
+
