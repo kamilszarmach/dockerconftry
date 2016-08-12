@@ -5,7 +5,7 @@ services:
     volumes:
       - ../sites/framework:/var/www/shared
   nginx-dupeczki:
-    build:.
+    build:
       context: .
       dockerfile: ./nginx/Dockerfile
     volumes_from:
@@ -17,7 +17,7 @@ services:
     volumes:
       - ../sites/dupeczki:/var/www/html
   nginx-ministranci:
-      build:.
+      build:
         context: .
         dockerfile: ./nginx/Dockerfile
       volumes_from:
@@ -29,7 +29,7 @@ services:
       volumes:
         - ../sites/ministranci:/var/www/html
   nginx-woodstock:
-      build:.
+      build:
         context: .
         dockerfile: ./nginx/Dockerfile
       volumes_from:
@@ -40,6 +40,16 @@ services:
         - fpm
       volumes:
         - ../sites/woodstock:/var/www/html
+  haproxy:
+    build:
+      context: .
+      dockerfile: ./haproxy/Dockerfile
+    ports:
+      - "80:80"
+    links:
+      - nginx-woodstock
+      - nginx-dupeczki
+      - nginx-ministranci
   fpm:
     image: php:fpm
     volumes_from:
