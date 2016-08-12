@@ -50,10 +50,12 @@ services:
     volumes:
       - ../sites/woodstock:/var/www/woodstock
       - ../sites/ministranci:/var/www/ministranci
+      - ../sites/framework:/var/www/shared
   fpm-dupeczki:
       build:
         context: .
         dockerfile: ./fpm/Dockerfile.fpm56
       volumes:
         - ../sites/dupeczki:/var/www/dupeczki
+        - ../sites/framework:/var/www/shared
 
