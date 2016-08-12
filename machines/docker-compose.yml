@@ -9,7 +9,7 @@ services:
     links:
       - fpm
     volumes:
-      - ../sites/dupeczki:/var/www/html
+      - ../sites/dupeczki:/var/www/dupeczki
       - ../sites/framework:/var/www/shared
   nginx-ministranci:
       build:
@@ -20,7 +20,7 @@ services:
       links:
         - fpm
       volumes:
-        - ../sites/ministranci:/var/www/html
+        - ../sites/ministranci:/var/www/ministranci
         - ../sites/framework:/var/www/shared
   nginx-woodstock:
       build:
@@ -31,7 +31,7 @@ services:
       links:
         - fpm
       volumes:
-        - ../sites/woodstock:/var/www/html
+        - ../sites/woodstock:/var/www/woodstock
         - ../sites/framework:/var/www/shared
   haproxy:
     build:
@@ -48,5 +48,15 @@ services:
       context: .
       dockerfile: ./fpm/Dockerfile
     volumes:
-      - ../sites/dupeczki:/var/www/html
+      - ../sites/woodstock:/var/www/woodstock
+      - ../sites/dupeczki:/var/www/dupeczki
+      - ../sites/ministranci:/var/www/ministranci
+  fpm-dupeczki:
+      build:
+        context: .
+        dockerfile: ./fpm/Dockerfile.fpm56
+      volumes:
+        - ../sites/woodstock:/var/www/woodstock
+        - ../sites/dupeczki:/var/www/dupeczki
+        - ../sites/ministranci:/var/www/ministranci
 
