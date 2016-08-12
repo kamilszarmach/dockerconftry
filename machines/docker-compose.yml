@@ -48,5 +48,5 @@ services:
       context: .
       dockerfile: ./fpm/Dockerfile
     volumes:
-      - ../sites:/var/www
+      - ../sites/dupeczki:/var/www/html
 
