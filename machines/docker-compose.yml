@@ -11,7 +11,7 @@ services:
     volumes_from:
       - web
     ports:
-      - "8001:80"
+      - "8001:8001"
     links:
       - fpm
     volumes:
@@ -23,7 +23,7 @@ services:
       volumes_from:
         - web
       ports:
-        - "8002:80"
+        - "8002:8002"
       links:
         - fpm
       volumes:
@@ -35,7 +35,7 @@ services:
       volumes_from:
         - web
       ports:
-        - "8003:80"
+        - "8003:8003"
       links:
         - fpm
       volumes:
