@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: ./nginx/Dockerfile
-    ports:
-      - "8001:8001"
+    expose:
+      - 80
     links:
       - fpm
     volumes:
@@ -15,8 +15,8 @@ services:
       build:
         context: .
         dockerfile: ./nginx/Dockerfile
-      ports:
-        - "8002:8002"
+      expose:
+        - 80
       links:
         - fpm
       volumes:
@@ -26,8 +26,8 @@ services:
       build:
         context: .
         dockerfile: ./nginx/Dockerfile
-      ports:
-        - "8003:8003"
+      expose:
+        - 80
       links:
         - fpm
       volumes:
