@@ -3,18 +3,18 @@ services:
   nginx-dupeczki:
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: ./nginx/Dockerfile.dupeczki
     expose:
       - 80
     links:
-      - fpm
+      - fpm-dupeczki
     volumes:
       - ../sites/dupeczki:/var/www/dupeczki
       - ../sites/framework:/var/www/shared
   nginx-ministranci:
       build:
         context: .
-        dockerfile: ./nginx/Dockerfile
+        dockerfile: ./nginx/Dockerfile.ministranci
       expose:
         - 80
       links:
@@ -25,7 +25,7 @@ services:
   nginx-woodstock:
       build:
         context: .
-        dockerfile: ./nginx/Dockerfile
+        dockerfile: ./nginx/Dockerfile.woodstock
       expose:
         - 80
       links:
@@ -49,14 +49,11 @@ services:
       dockerfile: ./fpm/Dockerfile
     volumes:
       - ../sites/woodstock:/var/www/woodstock
-      - ../sites/dupeczki:/var/www/dupeczki
       - ../sites/ministranci:/var/www/ministranci
   fpm-dupeczki:
       build:
         context: .
         dockerfile: ./fpm/Dockerfile.fpm56
       volumes:
-        - ../sites/woodstock:/var/www/woodstock
         - ../sites/dupeczki:/var/www/dupeczki
-        - ../sites/ministranci:/var/www/ministranci
 
