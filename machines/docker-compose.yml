@@ -1,7 +1,6 @@
 version: '2'
 services:
   web:
-    build: .
     volumes:
       - ../sites/framework:/var/www/shared
   nginx-dupeczki:
